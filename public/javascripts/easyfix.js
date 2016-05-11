@@ -1,6 +1,7 @@
-var photospheres = window.g.photospheres;
 var TINY_GIF = 'data:image/gif;base64,' + 
        'R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
+
+var photospheres = window.g.photospheres;
 function drawSphere(src){
   var scene = document.querySelector('a-scene');
   var sphere = document.createElement('a-entity');
@@ -11,12 +12,11 @@ function drawSphere(src){
 };
 var i = 0;
 setInterval(function(){
-  var sphere = document.querySelector('a-sphere');
-  if(sphere){
-    sphere.remove();
-  }
+  var spheres = document.querySelectorAll('a-entity');
+  for(var s = 0; s<spheres.length; s++ ){
+    spheres[s].setAttribute('material', 'src: url(' + TINY_GIF + '); side: double;');
+  };
   drawSphere(photospheres[i].media.src);
-//  drawSphere(TINY_GIF);
   if( i < photospheres.length - 1){
     i++;
   } else {
