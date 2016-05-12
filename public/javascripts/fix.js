@@ -16,15 +16,16 @@ function drawSphere(src){
 drawSphere(TINY_GIF);
 var i = 0;
 setInterval(function(){
-  var src = photospheres[i].media.src;
-  sphere.setAttribute('material', 'src: url(' + src + '); side: double;');
+  requestAnimationFrame(function(){
+    var src = photospheres[i].media.src;
+    sphere.setAttribute('material', 'src: url(' + src + '); side: double;');
 
-  if( i < photospheres.length - 1){
-    i++;
-  } else {
-    i = 0;
-  }
-
-},3000);
+    if( i < photospheres.length - 1){
+      i++;
+    } else {
+      i = 0;
+    }
+  })
+},5000);
 
 
